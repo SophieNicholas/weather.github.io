@@ -1,3 +1,10 @@
+if (location.protocol === 'http:') {
+    url = 'http://api.openweathermap.org/data/2.5/weather?lat=21.1682895&lon=-101.6723306&units=imperial&APPID=ec50a6072ac189dee111acdd3a38ab9f';
+} else {
+   url = 'https://api.openweathermap.org/data/2.5/weather?lat=21.1682895&lon=-101.6723306&units=imperial&APPID=ec50a6072ac189dee111acdd3a38ab9f';
+}
+
+
 APIkey = "189b79b5e67df1fad8b5340a47c537f7";
 // cityname= "London"
 // console.log(queryURL)
