@@ -1,7 +1,7 @@
 if (location.protocol === 'http:') {
     url = 'http://api.openweathermap.org/data/2.5/weather?lat=21.1682895&lon=-101.6723306&units=imperial&APPID=ec50a6072ac189dee111acdd3a38ab9f';
 } else {
-   url = 'https://api.openweathermap.org/data/2.5/weather?lat=21.1682895&lon=-101.6723306&units=imperial&APPID=ec50a6072ac189dee111acdd3a38ab9f';
+    url = 'https://api.openweathermap.org/data/2.5/weather?lat=21.1682895&lon=-101.6723306&units=imperial&APPID=ec50a6072ac189dee111acdd3a38ab9f';
 }
 
 
@@ -56,7 +56,7 @@ $("#searchButton").on("click", function () {
         console.log(humidity);
 
         var temperature = $("#temperature");
-        temperature.text(convertKelvinToCelsius(result.main.temp).toFixed(2) + " degrees");
+        temperature.text(convertKelvinToCelsius(result.main.temp).toFixed(2) + "°C");
         console.log(temperature);
 
         var wind = $("#wind");
@@ -64,6 +64,7 @@ $("#searchButton").on("click", function () {
         console.log(wind);
 
         var des = $("#des");
+
         des.text(result.weather[0].description)
         console.log(des);
 
@@ -91,12 +92,64 @@ $("#searchButton").on("click", function () {
             } else {
                 UV.addClass("safe");
             }
+        });
 
-         querythreeURL
+        date = 5 
+        querythreeURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + long + "&exclude=current,minutely,hourly&appid=" +
+            APIkey;
+        console.log(querythreeURL);
+      
+
+        $.ajax({
+            url: querythreeURL,
+            method: "GET"
+        }).then(function (result) {
+            console.log(result)
+            for (var i = 0; i < date; i++) {
+
+                var followingDay = $("<div>");
+                followingDay.attr("id", "following-day")
+                followingDay.addClass("col-md-2");
+
+       var day = $("<p>");
+       day.text(result.daily[i].dt);
+       var dateHead = $("<h5>");
+       dateHead.text("Date: ");  
+      $(day).prepend(dateHead); 
+
+       var conditions = $("<p>"); 
+       conditions.text(result.daily[i].weather[0].description);  
+       var conditionsHead = $("<h5>");
+       conditionsHead.text("Conditions: ");  
+      $(conditions).prepend(conditionsHead); 
+
+       var humidity = $("<p>");
+       humidity.text(result.daily[i].humidity + "%"); 
+       var humidityHead = $("<h5>");
+       humidityHead.text("Humidity: ");  
+      $(humidity).prepend(humidityHead); 
+       
+   
+       var temperature = $("<p>");
+       temperature.text(convertKelvinToCelsius(result.daily[i].temp.day).toFixed(2) + "°C");     
+       var temperatureHead = $("<h5>");
+       temperatureHead.text("Temperature: ");  
+      $(temperature).prepend(temperatureHead); 
+       
+       $(followingDay).append(day, conditions, humidity, temperature); 
+       $("#additions").append(followingDay);
+
+              }
+            }); 
 
         });
 
 
+            //dynamically create a div with the atttributes on the following day and the text of following day  
+       
+        // if (weather[0].description = "clear sky"){
+        //     var sun = $("<img>");
+        //     sun.attr(src="images/sun.png", alt="sun image") 
+        //     $("#des").append(sun);
+        // }
     });
-
-});

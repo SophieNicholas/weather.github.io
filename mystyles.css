@@ -12,16 +12,20 @@ div.top {
     background-color: lightslategray;
     margin-top: 40px;
     padding: 50px;
-    max-width: 500px;
 }
 
 #search-side {
     margin-left: 100px;
     margin-top: 50px;
+    margin-right: 100px;
+    background-color: lightskyblue;
 }
 
 
-.following-day {
+
+
+
+#following-day {
     padding: 30px;
     background-color: aqua;
     border-radius: 15px;
@@ -30,7 +34,7 @@ div.top {
 }
 
 #forecast {
-    margin-top: 60px;
+
 }
 
 #suggestions {

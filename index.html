@@ -7,20 +7,19 @@
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="mystyles.css" media="screen" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-  integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-   <!-- Latest compiled and minified CSS -->
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-   <!-- jQuery library -->
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-   <!-- Latest compiled JavaScript -->
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -28,8 +27,9 @@
     <div class="top">
         <h1>WEATHER APPLICATION</h1>
     </div>
-
-    <div id="search-side" class="row">
+    <!-- main row -->
+    <div id="search-side" class="row"> 
+        <!-- left collum -->
         <div class="col-4">
             <h3> Search for a City </h3>
             <form>
@@ -44,77 +44,100 @@
                 </dl>
             </div>
         </div>
-        <div class="col-8">
+        <!-- right collum -->
+        <div id=top class="col-8">
+            <!-- row inside right collum -->
             <div class="row">
-                <div id="that-day" class="col-md-6 offset-md-2">
-                    <h3 id="city"> CITY </h3> <h3 id="date"> mm/dd/yyyy </h3>
-                    <!-- area where info on that days weather will be dynamically appended  -->
-
+                <!-- collum inside row -->
+                <div id="that-day" class="col-md-8">
+                    <h3 id="city"> CITY </h3>
+                    <h3 id="date"> mm/dd/yyyy </h3>
                     <dl>
-                        <dt> Humididty: <p id="humidity"> </p> </dt>
-                        <dt> Temperature: <p id="temperature">  </dt>
-                        <dt> Wind: <p id="wind"> </dt>
-                         <dt> UV index: <p id="UV"> </p></dt>
-                        <dt> Description: <p id="des"> </p></dt>
+                        <dt> Humididty: <p id="humidity"> </p>
+                        </dt>
+                        <dt> Temperature: <p id="temperature">
+                        </dt>
+                        <dt> Wind: <p id="wind">
+                        </dt>
+                        <dt> UV index: <p id="UV"> </p>
+                        </dt>
+                        <dt> Description: <p id="des"> </p>
+                        </dt>
                     </dl>
 
 
                 </div>
             </div>
 
-            <div id="forecast"> 5 Day Forecst: </div>
-
-            <div class="row">
-                <div class="following-day" id="one" class="col-md-8">
-                    Tomorrow: 
-                      <!-- area where list will be dynamically appended including information on coming days -->
+            <div id="forecast"> <h3> 5 Day Forecst: </h3> </div>
+                <!-- second row in right collum -->
+            <div class="row" id="additions">
+                <!-- first collum in row -->
+                <!-- <div class="following-day" id="one" class="col-md-8">
+                    Tomorrow:
                     <dl>
-                        <dt> Humididty: <p id="one-humidity"> </p> </dt>
-                        <dt> Temperature: <p id="one-temperature">  </dt>
-                        <dt> Wind: <p id="one-wind"> </dt>
-                        <dt> Description: <p id="one-des"> </p></dt>
+                        <dt> Humididty: <p id="one-humidity"> </p>
+                        </dt>
+                        <dt> Temperature: <p id="one-temperature">
+                        </dt>
+                        <dt> Wind: <p id="one-wind">
+                        </dt>
+                        <dt> Description: <p id="one-des"> </p>
+                        </dt>
                     </dl>
                 </div>
                 <div class="following-day" id="-two" class="col-md-8">
                     Following day:
-                    <!-- area where list will be dynamically appended including information on coming days -->
                     <dl>
-                        <dt> Humididty: <p id="two-humidity"> </p> </dt>
-                        <dt> Temperature: <p id="two-temperature">  </dt>
-                        <dt> Wind: <p id="two-wind"> </dt>
-                        <dt> Description: <p id="two-des"> </p></dt>
+                        <dt> Humididty: <p id="two-humidity"> </p>
+                        </dt>
+                        <dt> Temperature: <p id="two-temperature">
+                        </dt>
+                        <dt> Wind: <p id="two-wind">
+                        </dt>
+                        <dt> Description: <p id="two-des"> </p>
+                        </dt>
                     </dl>
                 </div>
                 <div class="following-day" id="three" class="col-md-8">
                     Following day:
-                    <!-- area where list will be dynamically appended including information on coming days -->
                     <dl>
-                        <dt> Humididty: <p id="three-humidity"> </p> </dt>
-                        <dt> Temperature: <p id="three-temperature">  </dt>
-                        <dt> Wind: <p id="three-wind"> </dt>
-                        <dt> Description: <p id="three-des"> </p></dt>
+                        <dt> Humididty: <p id="three-humidity"> </p>
+                        </dt>
+                        <dt> Temperature: <p id="three-temperature">
+                        </dt>
+                        <dt> Wind: <p id="three-wind">
+                        </dt>
+                        <dt> Description: <p id="three-des"> </p>
+                        </dt>
                     </dl>
                 </div>
                 <div class="following-day" id="four" class="col-md-8">
                     Following day:
-                    <!-- area where list will be dynamically appended including information on coming days -->
                     <dl>
-                        <dt> Humididty: <p id="four-humidity"> </p> </dt>
-                        <dt> Temperature: <p id="four-temperature">  </dt>
-                        <dt> Wind: <p id="four-wind"> </dt>
-                        <dt> Description: <p id="four-des"> </p></dt>
+                        <dt> Humididty: <p id="four-humidity"> </p>
+                        </dt>
+                        <dt> Temperature: <p id="four-temperature">
+                        </dt>
+                        <dt> Wind: <p id="four-wind">
+                        </dt>
+                        <dt> Description: <p id="four-des"> </p>
+                        </dt>
                     </dl>
                 </div>
                 <div class="following-day" id="five" class="col-md-8">
                     Following day:
-                    <!-- area where list will be dynamically appended including information on coming days -->
                     <dl>
-                        <dt> Humididty: <p id="five-humidity"> </p> </dt>
-                        <dt> Temperature: <p id="five-temperature">  </dt>
-                        <dt> Wind: <p id="five-wind"> </dt>
-                        <dt> Description: <p id="five-des"> </p></dt>
+                        <dt> Humididty: <p id="five-humidity"> </p>
+                        </dt>
+                        <dt> Temperature: <p id="five-temperature">
+                        </dt>
+                        <dt> Wind: <p id="five-wind">
+                        </dt>
+                        <dt> Description: <p id="five-des"> </p>
+                        </dt>
                     </dl>
-                </div>
+                </div> -->
             </div>
         </div>
 
