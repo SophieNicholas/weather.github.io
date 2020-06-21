@@ -1,0 +1,71 @@
+div.top {
+    text-align: center;
+    background-color: blue;
+    color: cornsilk;
+    padding: 30px;
+}
+
+
+
+#that-day {
+    border-radius: 15px;
+    background-color: lightslategray;
+    margin-top: 40px;
+    padding: 50px;
+    max-width: 500px;
+}
+
+#search-side {
+    margin-left: 100px;
+    margin-top: 50px;
+}
+
+
+.following-day {
+    padding: 30px;
+    background-color: aqua;
+    border-radius: 15px;
+    margin-left: 5px;
+    margin-top: 10px;
+}
+
+#forecast {
+    margin-top: 60px;
+}
+
+#suggestions {
+    border-width: 5px;
+    border-color: darkblue;
+    background-color: lightblue;
+    max-width: 263px;
+}
+
+#box { 
+    border-color:black;
+    border-width: 10px;
+}
+
+#humidity, #temperature, #wind, #des, #UV {
+    font-weight: lighter;
+}
+
+.safe { 
+    background-color: chartreuse;
+    max-width: 50px;
+    padding: 5px;
+    border-radius: 15px;;
+}
+
+.moderate{
+    background-color: orange;
+    max-width: 50px;
+    padding: 5px;
+    border-radius: 15px;;
+} 
+
+.danger { 
+    background-color: crimson;
+    max-width: 50px;
+    padding: 5px;
+    border-radius: 15px;
+}
