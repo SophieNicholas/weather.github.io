@@ -15,11 +15,16 @@ $("#searchButton").on("click", function () {
     console.log(searchTerm);
     searchTerm = $("#searchTerm").val();
   
-    var newSearch = $("<dt>");
+    var newSearch = $("<p>");
     newSearch.text(searchTerm);
     newSearch.addClass("box")
     $("#boxx").prepend(newSearch);
 
+    // $(newSearch).on("click", function () {
+    // searchTerm.val() = newSearch.val();
+    // }); 
+
+    
     function print_today() {
         var now = new Date();
         var months = new Array('01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12');
