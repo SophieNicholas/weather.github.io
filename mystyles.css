@@ -26,6 +26,7 @@ div.top {
 
 
 #following-day {
+    min-width: 150px;
     padding: 30px;
     background-color: aqua;
     border-radius: 15px;
@@ -44,7 +45,7 @@ div.top {
     max-width: 263px;
 }
 
-#box { 
+.box { 
     border-color:black;
     border-width: 10px;
 }

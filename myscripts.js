@@ -3,19 +3,22 @@ if (location.protocol === 'http:') {
 } else {
     url = 'https://api.openweathermap.org/data/2.5/weather?lat=21.1682895&lon=-101.6723306&units=imperial&APPID=ec50a6072ac189dee111acdd3a38ab9f';
 }
+var searchTerm = "";
 
 
 APIkey = "189b79b5e67df1fad8b5340a47c537f7";
-// cityname= "London"
-// console.log(queryURL)
-var searchTerm = "";
 
 $("#searchButton").on("click", function () {
 
     event.preventDefault();
     searchTerm = $("#searchTerm").val();
     console.log(searchTerm);
-
+    searchTerm = $("#searchTerm").val();
+  
+    var newSearch = $("<dt>");
+    newSearch.text(searchTerm);
+    newSearch.addClass("box")
+    $("#boxx").prepend(newSearch);
 
     function print_today() {
         var now = new Date();
@@ -43,6 +46,7 @@ $("#searchButton").on("click", function () {
         url: queryURL,
         method: "GET"
     }).then(function (result) {
+
         console.log(result);
 
         var date = $("#date");
@@ -64,9 +68,13 @@ $("#searchButton").on("click", function () {
         console.log(wind);
 
         var des = $("#des");
-
         des.text(result.weather[0].description)
         console.log(des);
+
+        var icon = $("#icon");
+        var imgSrc = "http://openweathermap.org/img/wn/"+result.weather[0].icon+"@2x.png"; 
+        icon.attr("src", imgSrc );
+        console.log(icon);
 
         var long = result.coord.lat;
         console.log(long)
@@ -94,11 +102,11 @@ $("#searchButton").on("click", function () {
             }
         });
 
-        date = 5 
+        date = 5
         querythreeURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + long + "&exclude=current,minutely,hourly&appid=" +
             APIkey;
         console.log(querythreeURL);
-      
+
 
         $.ajax({
             url: querythreeURL,
@@ -111,45 +119,43 @@ $("#searchButton").on("click", function () {
                 followingDay.attr("id", "following-day")
                 followingDay.addClass("col-md-2");
 
-       var day = $("<p>");
-       day.text(result.daily[i].dt);
-       var dateHead = $("<h5>");
-       dateHead.text("Date: ");  
-      $(day).prepend(dateHead); 
 
-       var conditions = $("<p>"); 
-       conditions.text(result.daily[i].weather[0].description);  
-       var conditionsHead = $("<h5>");
-       conditionsHead.text("Conditions: ");  
-      $(conditions).prepend(conditionsHead); 
+                var firstDay = (result.daily[i].dt) * 1000;
 
-       var humidity = $("<p>");
-       humidity.text(result.daily[i].humidity + "%"); 
-       var humidityHead = $("<h5>");
-       humidityHead.text("Humidity: ");  
-      $(humidity).prepend(humidityHead); 
-       
-   
-       var temperature = $("<p>");
-       temperature.text(convertKelvinToCelsius(result.daily[i].temp.day).toFixed(2) + "°C");     
-       var temperatureHead = $("<h5>");
-       temperatureHead.text("Temperature: ");  
-      $(temperature).prepend(temperatureHead); 
-       
-       $(followingDay).append(day, conditions, humidity, temperature); 
-       $("#additions").append(followingDay);
+                var dateObject = new Date(firstDay);
 
-              }
-            }); 
+                var dayy = dateObject.toLocaleString();
 
+                var day = $("<p>");
+                day.text(dayy);
+                var dateHead = $("<h5>");
+                dateHead.text("Date: ");
+                $(day).prepend(dateHead);
+
+                var conditions = $("<p>");
+                conditions.text(result.daily[i].weather[0].description);
+                var conditionsHead = $("<h5>");
+                conditionsHead.text("Conditions: ");
+                $(conditions).prepend(conditionsHead);
+
+                var humidity = $("<p>");
+                humidity.text(result.daily[i].humidity + "%");
+                var humidityHead = $("<h5>");
+                humidityHead.text("Humidity: ");
+                $(humidity).prepend(humidityHead);
+
+
+                var temperature = $("<p>");
+                temperature.text(convertKelvinToCelsius(result.daily[i].temp.day).toFixed(2) + "°C");
+                var temperatureHead = $("<h5>");
+                temperatureHead.text("Temperature: ");
+                $(temperature).prepend(temperatureHead);
+
+                $(followingDay).append(day, conditions, humidity, temperature);
+                $("#additions").append(followingDay);
+
+            }
         });
 
-
-            //dynamically create a div with the atttributes on the following day and the text of following day  
-       
-        // if (weather[0].description = "clear sky"){
-        //     var sun = $("<img>");
-        //     sun.attr(src="images/sun.png", alt="sun image") 
-        //     $("#des").append(sun);
-        // }
     });
+});
