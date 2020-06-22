@@ -1,9 +1,10 @@
-if (location.protocol === 'http:') {
-    url = 'http://api.openweathermap.org/data/2.5/weather?lat=21.1682895&lon=-101.6723306&units=imperial&APPID=ec50a6072ac189dee111acdd3a38ab9f';
-} else {
-    url = 'https://api.openweathermap.org/data/2.5/weather?lat=21.1682895&lon=-101.6723306&units=imperial&APPID=ec50a6072ac189dee111acdd3a38ab9f';
-}
+// if (location.protocol === 'http:') {
+//     url = 'http://api.openweathermap.org/data/2.5/weather?lat=21.1682895&lon=-101.6723306&units=imperial&APPID=ec50a6072ac189dee111acdd3a38ab9f';
+// } else {
+//     url = 'https://api.openweathermap.org/data/2.5/weather?lat=21.1682895&lon=-101.6723306&units=imperial&APPID=ec50a6072ac189dee111acdd3a38ab9f';
+// }
 var searchTerm = "";
+
 
 
 APIkey = "189b79b5e67df1fad8b5340a47c537f7";
@@ -20,9 +21,9 @@ $("#searchButton").on("click", function () {
     newSearch.addClass("box")
     $("#boxx").prepend(newSearch);
 
-    // $(newSearch).on("click", function () {
-    // searchTerm.val() = newSearch.val();
-    // }); 
+    $(newSearch).on("click", function () {
+    searchTerm.val() = newSearch.val;
+    }); 
 
     
     function print_today() {
@@ -44,7 +45,7 @@ $("#searchButton").on("click", function () {
             return (kelvin - 273.15);
         }
     }
-    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + searchTerm + "&APPID=" + APIkey;
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + searchTerm + "&APPID=" + APIkey;
     console.log(queryURL);
 
     $.ajax({
@@ -77,7 +78,7 @@ $("#searchButton").on("click", function () {
         console.log(des);
 
         var icon = $("#icon");
-        var imgSrc = "http://openweathermap.org/img/wn/"+result.weather[0].icon+"@2x.png"; 
+        var imgSrc = "https://openweathermap.org/img/wn/"+result.weather[0].icon+"@2x.png"; 
         icon.attr("src", imgSrc );
         console.log(icon);
 
@@ -87,7 +88,7 @@ $("#searchButton").on("click", function () {
         var lat = result.coord.lon;
         console.log(lat);
 
-        querytwoURL = "http://api.openweathermap.org/data/2.5/uvi?appid=" + APIkey + "&lat=" + lat + "&lon=" + long;
+        querytwoURL = "https://api.openweathermap.org/data/2.5/uvi?appid=" + APIkey + "&lat=" + lat + "&lon=" + long;
         console.log(querytwoURL)
         $.ajax({
             url: querytwoURL,
